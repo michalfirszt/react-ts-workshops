@@ -1,9 +1,10 @@
-import { TextField, TextFieldProps, Typography } from '@mui/material';
+import { Button, TextField, TextFieldProps, Typography } from '@mui/material';
 import {
   ChangeEvent,
   isValidElement,
   ReactNode,
   useCallback,
+  useRef,
   useState,
 } from 'react';
 
@@ -20,6 +21,7 @@ export const TextInput = ({
   onChange,
   textFieldProps,
 }: Props): JSX.Element => {
+  const inputRef = useRef<HTMLInputElement>(null);
   const [inputValue, setInputValue] = useState<string>(defaultValue);
 
   const handleInputChange = useCallback(
@@ -30,6 +32,10 @@ export const TextInput = ({
     },
     [onChange]
   );
+
+  const focusInput = useCallback(() => {
+    inputRef.current?.focus();
+  }, [inputRef]);
 
   return (
     <div>
@@ -42,10 +48,14 @@ export const TextInput = ({
       </div>
       <div>
         <TextField
+          inputRef={inputRef}
           value={inputValue}
           onChange={handleInputChange}
           {...textFieldProps}
         />
+      </div>
+      <div>
+        <Button onClick={focusInput}>Start typing</Button>
       </div>
     </div>
   );
