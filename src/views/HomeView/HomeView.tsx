@@ -1,4 +1,4 @@
-import { TextInput } from '@components';
+import { ConfirmText, TextInput } from '@components';
 import { Typography } from '@mui/material';
 
 export const HomeView = (): JSX.Element => (
@@ -17,5 +17,8 @@ export const HomeView = (): JSX.Element => (
       />
     </div>
     <hr />
+    <div>
+      <ConfirmText />
+    </div>
   </div>
 );
