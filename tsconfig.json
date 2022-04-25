@@ -23,6 +23,8 @@
     "paths": {
       "@components": ["./components"],
       "@components/*": ["./components/*"],
+      "@context": ["./context"],
+      "@context/*": ["./context/*"],
       "@routes": ["./routes"],
       "@routes/*": ["./routes/*"],
       "@views": ["./views"],

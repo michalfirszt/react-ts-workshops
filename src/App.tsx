@@ -1,3 +1,4 @@
+import { ThemeContextWrapper } from '@context/themeContext';
 import { blue, grey } from '@mui/material/colors';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import { AppRoutes } from '@routes';
@@ -16,9 +17,11 @@ const theme = createTheme({
 
 const App = (): JSX.Element => (
   <ThemeProvider theme={theme}>
-    <BrowserRouter>
-      <AppRoutes />
-    </BrowserRouter>
+    <ThemeContextWrapper>
+      <BrowserRouter>
+        <AppRoutes />
+      </BrowserRouter>
+    </ThemeContextWrapper>
   </ThemeProvider>
 );
 
