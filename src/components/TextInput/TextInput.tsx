@@ -25,7 +25,7 @@ export const TextInput = ({
   const [inputValue, setInputValue] = useState<string>(defaultValue);
 
   const handleInputChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>) => {
+    (event: ChangeEvent<HTMLInputElement>): void => {
       setInputValue(event.target.value);
 
       onChange?.(event);
@@ -33,7 +33,7 @@ export const TextInput = ({
     [onChange]
   );
 
-  const focusInput = useCallback(() => {
+  const focusInput = useCallback((): void => {
     inputRef.current?.focus();
   }, [inputRef]);
 

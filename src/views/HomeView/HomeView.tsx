@@ -7,7 +7,7 @@ export const HomeView = (): JSX.Element => {
   const { isThemeDark, setIsThemeDark } = useContext(ThemeContext);
 
   const toggleDarkMode = useCallback((): void => {
-    setIsThemeDark?.((prevState) => !prevState);
+    setIsThemeDark?.((prevState): boolean => !prevState);
   }, [setIsThemeDark]);
 
   return (

@@ -9,7 +9,7 @@ type State = { inputValue: string; isTextConfirmed: boolean };
 
 const initialState: State = { inputValue: '', isTextConfirmed: false };
 
-const reducer = (state: State, action: Action) => {
+const reducer = (state: State, action: Action): State => {
   switch (action.type) {
     case 'setInputValue': {
       return { ...state, inputValue: action.payload, isTextConfirmed: false };
@@ -34,7 +34,7 @@ export const ConfirmText = (): JSX.Element => {
       <div>
         <TextField
           value={inputValue}
-          onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          onChange={(event: ChangeEvent<HTMLInputElement>): void => {
             dispatch({ type: 'setInputValue', payload: event.target.value });
           }}
         />
@@ -42,7 +42,7 @@ export const ConfirmText = (): JSX.Element => {
       <div>
         <TextField
           placeholder="Confirm"
-          onChange={(event: ChangeEvent<HTMLInputElement>) => {
+          onChange={(event: ChangeEvent<HTMLInputElement>): void => {
             dispatch({ type: 'checkInputValues', payload: event.target.value });
           }}
         />
