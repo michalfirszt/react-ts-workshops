@@ -3,11 +3,11 @@ import { ThemeContext } from '@context/themeContext';
 import { Switch, Typography } from '@mui/material';
 import { useCallback, useContext } from 'react';
 
-export const HomeView = (): JSX.Element => {
+export const HomeView = () => {
   const { isThemeDark, setIsThemeDark } = useContext(ThemeContext);
 
-  const toggleDarkMode = useCallback((): void => {
-    setIsThemeDark?.((prevState): boolean => !prevState);
+  const toggleDarkMode = useCallback(() => {
+    setIsThemeDark?.((prevState) => !prevState);
   }, [setIsThemeDark]);
 
   return (

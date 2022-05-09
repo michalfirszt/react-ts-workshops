@@ -1,31 +1,17 @@
-import { Button, TextField, TextFieldProps, Typography } from '@mui/material';
-import {
-  ChangeEvent,
-  isValidElement,
-  ReactNode,
-  useCallback,
-  useRef,
-  useState,
-} from 'react';
-
-type Props = {
-  defaultValue?: string;
-  inputTitle: string | ReactNode;
-  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
-  textFieldProps?: TextFieldProps;
-};
+import { Button, TextField, Typography } from '@mui/material';
+import { isValidElement, useCallback, useRef, useState } from 'react';
 
 export const TextInput = ({
   defaultValue = '',
   inputTitle,
   onChange,
   textFieldProps,
-}: Props): JSX.Element => {
-  const inputRef = useRef<HTMLInputElement>(null);
-  const [inputValue, setInputValue] = useState<string>(defaultValue);
+}) => {
+  const inputRef = useRef(null);
+  const [inputValue, setInputValue] = useState(defaultValue);
 
   const handleInputChange = useCallback(
-    (event: ChangeEvent<HTMLInputElement>): void => {
+    (event) => {
       setInputValue(event.target.value);
 
       onChange?.(event);
@@ -33,7 +19,7 @@ export const TextInput = ({
     [onChange]
   );
 
-  const focusInput = useCallback((): void => {
+  const focusInput = useCallback(() => {
     inputRef.current?.focus();
   }, [inputRef]);
 

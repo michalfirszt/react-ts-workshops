@@ -1,15 +1,9 @@
 import { TextField } from '@mui/material';
-import { ChangeEvent, useReducer } from 'react';
+import { useReducer } from 'react';
 
-type Action =
-  | { type: 'setInputValue'; payload: string }
-  | { type: 'checkInputValues'; payload: string };
+const initialState = { inputValue: '', isTextConfirmed: false };
 
-type State = { inputValue: string; isTextConfirmed: boolean };
-
-const initialState: State = { inputValue: '', isTextConfirmed: false };
-
-const reducer = (state: State, action: Action): State => {
+const reducer = (state, action) => {
   switch (action.type) {
     case 'setInputValue': {
       return { ...state, inputValue: action.payload, isTextConfirmed: false };
@@ -23,7 +17,7 @@ const reducer = (state: State, action: Action): State => {
   }
 };
 
-export const ConfirmText = (): JSX.Element => {
+export const ConfirmText = () => {
   const [{ inputValue, isTextConfirmed }, dispatch] = useReducer(
     reducer,
     initialState
@@ -34,7 +28,7 @@ export const ConfirmText = (): JSX.Element => {
       <div>
         <TextField
           value={inputValue}
-          onChange={(event: ChangeEvent<HTMLInputElement>): void => {
+          onChange={(event) => {
             dispatch({ type: 'setInputValue', payload: event.target.value });
           }}
         />
@@ -42,7 +36,7 @@ export const ConfirmText = (): JSX.Element => {
       <div>
         <TextField
           placeholder="Confirm"
-          onChange={(event: ChangeEvent<HTMLInputElement>): void => {
+          onChange={(event) => {
             dispatch({ type: 'checkInputValues', payload: event.target.value });
           }}
         />
